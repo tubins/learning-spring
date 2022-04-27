@@ -81,4 +81,26 @@ public class ReservationService {
         });
         return allGuests;
     }
+
+    /**
+     * Save guest details.
+     *
+     * @param guestDetails guest details.
+     * @return all guest details.
+     */
+    public void saveGuest(final Guest guestDetails) {
+        if (guestDetails == null) {
+            throw new RuntimeException("Guest cannot be null.");
+        }
+        this.guestRepository.save(guestDetails);
+    }
+
+    /**
+     * Gets all the rooms details.
+     *
+     * @return all rooms.
+     */
+    public List<Room> getAllRooms() {
+        return (List<Room>) this.roomRepository.findAll();
+    }
 }

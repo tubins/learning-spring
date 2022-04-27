@@ -3,11 +3,10 @@ package com.tubz.learningspring.WebServiceController;
 import com.tubz.learningspring.business.ReservationService;
 import com.tubz.learningspring.business.RoomReservation;
 import com.tubz.learningspring.data.Guest;
+import com.tubz.learningspring.data.Room;
 import com.tubz.learningspring.util.DateUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -52,5 +51,27 @@ public class WebServiceController {
     @GetMapping("/guests")
     public List<Guest> getGuests() {
         return reservationService.getAllGuests();
+    }
+
+    /**
+     * Api to add new guest details.
+     *
+     * @param guestDetails guest details to add.
+     * @return list of all guest details.
+     */
+    @PostMapping("/guests")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveGuest(@RequestBody final Guest guestDetails) {
+        this.reservationService.saveGuest(guestDetails);
+    }
+
+    /**
+     * Api to get all the rooms details.
+     *
+     * @return all rooms details
+     */
+    @GetMapping("/rooms")
+    public List<Room> getRooms() {
+        return reservationService.getAllRooms();
     }
 }

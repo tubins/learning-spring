@@ -17,8 +17,8 @@ import javax.persistence.*;
 public class Guest {
     @Id
     @Column(name = "GUEST_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long guestId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long guestId;
     @Column(name = "FIRST_NAME")
     private String firstName;
     @Column(name = "LAST_NAME")
