@@ -2,6 +2,7 @@ package com.tubz.learningspring.util;
 
 import com.tubz.learningspring.business.ReservationService;
 import com.tubz.learningspring.business.RoomReservation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,8 @@ import java.util.List;
 @Component
 public class AppStartupEvent implements ApplicationListener<ApplicationReadyEvent> {
 
+    @Value("${print.dbData.onStartup}")
+    private boolean printDbDataOneAppStartUp;
     private final ReservationService reservationService;
     private final DateUtils dateUtils;
 
@@ -22,6 +25,9 @@ public class AppStartupEvent implements ApplicationListener<ApplicationReadyEven
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
+        if (!printDbDataOneAppStartUp) {
+            return;
+        }
         Date date = this.dateUtils.createDateFromDateString("2022-01-01");
         List<RoomReservation> reservations = this.reservationService.getRoomReservationsForDate(date);
         reservations.forEach(System.out::println);

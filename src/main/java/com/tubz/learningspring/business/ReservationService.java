@@ -15,12 +15,25 @@ public class ReservationService {
     private final GuestRepository guestRepository;
 
 
+    /**
+     * Constructor.
+     *
+     * @param roomRepository        room repo.
+     * @param reservationRepository reservation repo.
+     * @param guestRepository       guest repo.
+     */
     public ReservationService(RoomRepository roomRepository, ReservationRepository reservationRepository, GuestRepository guestRepository) {
         this.roomRepository = roomRepository;
         this.reservationRepository = reservationRepository;
         this.guestRepository = guestRepository;
     }
 
+    /**
+     * Gets all room reservation for a given date.
+     *
+     * @param date given date.
+     * @return returns all the room reservations.
+     */
     public List<RoomReservation> getRoomReservationsForDate(Date date) {
         Iterable<Room> rooms = this.roomRepository.findAll();
         Map<Long, RoomReservation> roomReservationMap = new HashMap();
@@ -53,4 +66,19 @@ public class ReservationService {
         return roomReservations;
     }
 
+    /**
+     * Gets all the guests details.
+     *
+     * @return guests details.
+     */
+    public List<Guest> getAllGuests() {
+        List<Guest> allGuests = this.guestRepository.findAll();
+        allGuests.sort((o1, o2) -> {
+            if (o1.getLastName().equals(o2.getLastName())) {
+                return o1.getFirstName().compareTo(o2.getFirstName());
+            }
+            return o1.getLastName().compareTo(o2.getLastName());
+        });
+        return allGuests;
+    }
 }
