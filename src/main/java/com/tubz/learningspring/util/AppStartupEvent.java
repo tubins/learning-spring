@@ -18,13 +18,13 @@ public class AppStartupEvent implements ApplicationListener<ApplicationReadyEven
     private final ReservationService reservationService;
     private final DateUtils dateUtils;
 
-    public AppStartupEvent(ReservationService reservationService, DateUtils dateUtils) {
+    public AppStartupEvent(final ReservationService reservationService, final DateUtils dateUtils) {
         this.reservationService = reservationService;
         this.dateUtils = dateUtils;
     }
 
     @Override
-    public void onApplicationEvent(ApplicationReadyEvent event) {
+    public void onApplicationEvent(final ApplicationReadyEvent event) {
         if (!printDbDataOneAppStartUp) {
             return;
         }
