@@ -57,7 +57,6 @@ public class WebServiceController {
      * Api to add new guest details.
      *
      * @param guestDetails guest details to add.
-     * @return list of all guest details.
      */
     @PostMapping("/guests")
     @ResponseStatus(HttpStatus.CREATED)

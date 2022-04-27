@@ -13,7 +13,7 @@ public class DateUtils {
 
     public Date createDateFromDateString(String dateString) {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = null;
+        Date date;
         if (StringUtils.hasText(dateString)) {
             try {
                 date = format.parse(dateString);
