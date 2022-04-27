@@ -23,6 +23,13 @@ public class RoomReservationController {
         this.reservationService = reservationService;
     }
 
+    /**
+     * Controller to get all the reservation details.
+     *
+     * @param dateString date string.
+     * @param model      reservation model.
+     * @return return the view the reservation data.
+     */
     @GetMapping()
     public String getReservations(@RequestParam(value = "date", required = false) String dateString, Model model) {
         Date date = this.dateUtils.createDateFromDateString(dateString);
