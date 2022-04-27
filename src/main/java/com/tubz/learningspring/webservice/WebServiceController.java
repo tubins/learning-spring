@@ -1,4 +1,4 @@
-package com.tubz.learningspring.WebServiceController;
+package com.tubz.learningspring.webservice;
 
 import com.tubz.learningspring.business.ReservationService;
 import com.tubz.learningspring.business.RoomReservation;
