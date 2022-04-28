@@ -8,6 +8,7 @@ import com.tubz.learningspring.util.DateUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class WebServiceController {
      */
     @PostMapping("/guests")
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveGuest(@RequestBody final Guest guestDetails) {
+    public void saveGuest(@Valid @RequestBody final Guest guestDetails) {
         this.reservationService.saveGuest(guestDetails);
     }
 

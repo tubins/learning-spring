@@ -1,5 +1,6 @@
 package com.tubz.learningspring.data;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
