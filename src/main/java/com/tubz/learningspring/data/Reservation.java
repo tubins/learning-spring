@@ -1,5 +1,6 @@
 package com.tubz.learningspring.data;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,6 +16,7 @@ import java.sql.Date;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class Reservation {
     @Id
     @Column(name = "RESERVATION_ID")

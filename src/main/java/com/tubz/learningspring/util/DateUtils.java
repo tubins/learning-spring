@@ -8,9 +8,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Date utils.
+ */
 @Component
 public class DateUtils {
 
+    /**
+     * Create date from date string.
+     *
+     * @param dateString date string.
+     * @return date object in yyy-MM-dd format.
+     */
     public Date createDateFromDateString(String dateString) {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date;
